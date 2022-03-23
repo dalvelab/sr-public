@@ -1,19 +1,18 @@
 import React, { ReactNode } from "react";
 
+import { Container } from "@components/UI";
+
 import "./MainContainer.scss";
 
 interface IProps {
   children: ReactNode;
-  marginLeft: string;
 }
 
 export const MainContainer: React.FC<IProps> = (props) => {
-  const { children, marginLeft } = props;
+  const { children } = props;
   return (
-    <>
-      <main className="main__container__wrapper" style={{ marginLeft }}>
-        {children}
-      </main>
-    </>
+    <div className="main__container__wrapper">
+      <Container>{children}</Container>
+    </div>
   );
 };

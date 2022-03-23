@@ -1,6 +1,7 @@
-.main__container__wrapper {
-  width: calc(100% - 270px);
+.main__wrapper {
+  width: 100%;
   height: auto;
   min-height: 100vh;
   background-color: var(--color-primary-light);
+  display: flex;
 }

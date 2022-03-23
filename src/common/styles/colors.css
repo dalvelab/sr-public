@@ -1,0 +1,28 @@
+:root {
+  --color-black: #1d2532;
+  --color-white: #ffffff;
+  --color-primary: #3661ed;
+  --color-primary-light: #ebf0fe;
+  --color-blue-gray: #7178a1;
+  --color-light-gray: #f6f7fb;
+}
+
+.font--black {
+  color: var(--color-black);
+}
+
+.font--white {
+  color: var(--color-white);
+}
+
+.font--primary {
+  color: var(--color-primary);
+}
+
+.font--blue-gray {
+  color: var(--color-primary);
+}
+
+.font--light-gray {
+  color: var(--color-light-gray);
+}
