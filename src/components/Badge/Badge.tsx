@@ -1,5 +1,5 @@
 interface IProps {
-  text: string;
+  text: string | number;
   backgroundColor: string;
   color?: string;
   padding?: string;

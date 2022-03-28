@@ -51,7 +51,7 @@ abstract class ApiUrl extends AbstractUrl implements IUrl {
   }
 
   getOrigin() {
-    return `${this.host}${this.rootPath}/v${this.version}${this.appPath}`;
+    return `${this.host}${this.rootPath}${this.appPath}${this.path}`;
   }
 
   getBase() {

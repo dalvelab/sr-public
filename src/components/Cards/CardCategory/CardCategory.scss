@@ -1,8 +1,9 @@
 .card__category {
-  width: 230px;
-  height: 230px;
+  width: 220px;
+  height: 220px;
   background-color: var(--color-white);
   border-radius: 15px;
+  padding: 12px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -17,9 +18,16 @@
   .card__image {
     margin-top: 10px;
     width: 145px;
-    height: 115px;
+    height: 125px;
     background-color: #ccc;
     border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 125px;
+    }
   }
   .card__title {
     margin-top: 16px;

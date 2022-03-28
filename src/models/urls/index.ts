@@ -6,3 +6,4 @@ export { AbstractUrl, PageUrl, ApiUrl };
 
 export * from "./models";
 export * from "./pages";
+export * from "./api";

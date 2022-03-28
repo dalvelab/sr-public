@@ -1,16 +1,33 @@
+import { ChangeEvent } from "react";
+
+import classNames from "classnames";
+
 import "./StandardInput.scss";
 
 interface IProps {
-  width?: string;
-  height?: string;
+  classes?: string;
   type?: string;
+  value: string;
+  error?: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const StandardInput: React.FC<IProps> = (props) => {
-  const { width = "280px", height = "40px", type = "text" } = props;
+  const { classes, type = "text", value, error, onChange } = props;
   return (
-    <div className="standard__input__wrapper" style={{ width, height }}>
-      <input type={type} placeholder="Поиск..." />
+    <div className="standard__input__group__wrapper">
+      <div className="standard__input__wrapper">
+        <input
+          type={type}
+          placeholder="Поиск..."
+          value={value}
+          onChange={onChange}
+          className={classNames(classes, {
+            "input__error--active": error,
+          })}
+        />
+      </div>
+      {error && <small>{error}</small>}
     </div>
   );
 };

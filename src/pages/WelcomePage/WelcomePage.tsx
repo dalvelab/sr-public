@@ -42,12 +42,12 @@ export const WelcomePage: React.FC = () => {
         </div>
         <SearchFormContainer />
       </section>
-      <section className="section__default">
-        <h2 className="section__default__title">Категории товаров</h2>
+      <section className="welcome__page__categories__section">
+        <h2>Категории товаров</h2>
         <CategoriesContainer />
       </section>
-      <section className="section__default">
-        <h2 className="section__default__title">Специальные предложения</h2>
+      <section className="welcome__page__special__offers__section">
+        <h2>Специальные предложения</h2>
         <SpecialOfferContainer />
       </section>
     </section>

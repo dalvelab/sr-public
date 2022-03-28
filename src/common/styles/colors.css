@@ -6,6 +6,7 @@
   --color-blue-gray: #7178a1;
   --color-light-gray: #f6f7fb;
   --color-light-green: #c4eed7;
+  --color-red: #ff4154;
 }
 
 .font--black {
@@ -26,4 +27,8 @@
 
 .font--light-gray {
   color: var(--color-light-gray);
+}
+
+.font--red {
+  color: var(--color-red);
 }
