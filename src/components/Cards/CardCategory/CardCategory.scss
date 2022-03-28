@@ -1,0 +1,28 @@
+.card__category {
+  width: 230px;
+  height: 230px;
+  background-color: var(--color-white);
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  .badge__wrapper {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  .card__image {
+    margin-top: 10px;
+    width: 145px;
+    height: 115px;
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+  .card__title {
+    margin-top: 16px;
+    font-size: 16px;
+  }
+}

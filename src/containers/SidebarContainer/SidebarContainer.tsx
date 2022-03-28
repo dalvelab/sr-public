@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
-import LogoSvg from "@icons/logo.svg";
+import classNames from "classnames";
 
 import { Divider } from "@components/UI";
-import { IconEnvelope } from "@components/Icons";
+import { IconEnvelope, IconLogo, IconLogin } from "@components/Icons";
 import { Tab } from "@components/Tabs";
 import { RouterLinks } from "@models/routes";
 import { TabsConfig } from "./Tabs";
 
 import "./SidebarContainer.scss";
 
-export const SidebarContainer: React.FC = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+interface IProps {
+  isCollapsed: boolean;
+  setIsCollapsed: (isOpened: boolean) => void;
+}
+
+export const SidebarContainer: React.FC<IProps> = (props) => {
+  const { isCollapsed, setIsCollapsed } = props;
+
   const [isActive, setIsActive] = useState(RouterLinks.WELCOME);
 
   const handleTabClick = (key: RouterLinks) => {
@@ -29,14 +33,13 @@ export const SidebarContainer: React.FC = () => {
 
   return (
     <div
-      className={
-        isCollapsed
-          ? "sidebar__wrapper__container--hidden"
-          : "sidebar__wrapper__container"
-      }
+      className={classNames("sidebar__wrapper__container", {
+        "sidebar--visible": !isCollapsed,
+        "sidebar--hidden": isCollapsed,
+      })}
     >
       <div className="sidebar__logo">
-        <img src={LogoSvg} alt="Logo Sidebar" />
+        <IconLogo color="#3661ed" />
         <h6 className="logo__text">
           <span className="font--primary">Строительные</span>{" "}
           <span className="font--black">Решения</span>
@@ -45,15 +48,14 @@ export const SidebarContainer: React.FC = () => {
       <Divider margin="24px 0" />
       <div className="sidebar__tabs__wrapper">
         {TabsConfig.map((tab) => (
-          <Link to={tab.path}>
-            <Tab
-              isActive={isActive === tab.key}
-              key={tab.key}
-              title={tab.label}
-              icon={tab.icon}
-              onClick={() => handleTabClick(tab.key)}
-            />
-          </Link>
+          <Tab
+            path={tab.path}
+            isActive={isActive === tab.key}
+            key={tab.key}
+            title={tab.label}
+            icon={tab.icon}
+            onClick={() => handleTabClick(tab.key)}
+          />
         ))}
       </div>
       <div className="sidebar__controls__wrapper">
@@ -64,12 +66,14 @@ export const SidebarContainer: React.FC = () => {
           icon={<IconEnvelope color="#7178a1" />}
         />
         <Divider margin="12px 0" />
-        <Tab
-          title="Скрыть меню"
-          onClick={handleCollapseClick}
-          isActive={false}
-          icon={<IconEnvelope color="#7178a1" />}
-        />
+        <div className="sidebar__conterols--hide">
+          <Tab
+            title="Скрыть меню"
+            onClick={handleCollapseClick}
+            isActive={false}
+            icon={<IconLogin color="#7178a1" />}
+          />
+        </div>
       </div>
     </div>
   );

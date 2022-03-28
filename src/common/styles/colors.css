@@ -5,6 +5,7 @@
   --color-primary-light: #ebf0fe;
   --color-blue-gray: #7178a1;
   --color-light-gray: #f6f7fb;
+  --color-light-green: #c4eed7;
 }
 
 .font--black {
@@ -20,7 +21,7 @@
 }
 
 .font--blue-gray {
-  color: var(--color-primary);
+  color: var(--color-blue-gray);
 }
 
 .font--light-gray {

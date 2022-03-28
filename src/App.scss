@@ -39,5 +39,28 @@ p {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+}
+
+section {
+  width: 100%;
+}
+
+.section__default {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+}
+
+button {
+  border: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
 }

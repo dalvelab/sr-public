@@ -7,8 +7,12 @@
   cursor: pointer;
   border-radius: 8px;
   .tab__icon {
+    width: 25px;
+    height: 25px;
     padding: 16px;
-    fill: #3661ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .tab__text {
     font-size: 18px;

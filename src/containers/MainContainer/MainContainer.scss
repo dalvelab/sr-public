@@ -1,6 +1,9 @@
 .main__container__wrapper {
-  width: calc(100% - 270px);
+  width: 100%;
+  max-width: 1280px;
   height: auto;
   min-height: 100vh;
-  background-color: var(--color-primary-light);
+  display: flex;
+  transition: 0.3s ease-out;
+  margin-top: 136px;
 }

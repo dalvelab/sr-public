@@ -1,0 +1,65 @@
+.card__item {
+  width: 300px;
+  height: 405px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  padding: 20px;
+  border-radius: 15px;
+  .card__image {
+    width: 100%;
+    height: 180px;
+    border-radius: 4px;
+    margin: 10px auto 0 auto;
+    background-color: #f9f9f9;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+  .card__info {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    .badge__wrapper {
+      .badge__text {
+        font-weight: 500;
+      }
+    }
+    .card__itemcode {
+      font-size: 12px;
+    }
+  }
+  .card__title {
+    margin-top: 12px;
+    font-size: 16px;
+  }
+  .card__prices__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    .card__price {
+      color: var(--color-black);
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .card__old__price {
+      color: var(--color-blue-gray);
+      text-decoration: line-through;
+      font-size: 14px;
+      margin-right: 8px;
+    }
+  }
+  .card__button__wrapper {
+    margin-top: auto;
+    button {
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 17px;
+    }
+  }
+}

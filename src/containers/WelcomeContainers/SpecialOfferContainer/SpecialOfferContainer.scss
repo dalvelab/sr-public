@@ -1,0 +1,10 @@
+.welcome__page__special__offer__container {
+  width: 100%;
+  height: auto;
+  min-height: 250px;
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+  gap: 40px;
+  margin-bottom: 30px;
+}

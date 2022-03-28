@@ -1,0 +1,39 @@
+.search__form__container {
+  width: auto;
+  max-width: 100%;
+  min-width: 200px;
+  height: auto;
+  min-height: 300px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e5e5;
+  border-radius: 15px;
+  display: flex;
+  .search__form__wrapper {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    .input__wrapper {
+      width: calc(100% - 200px);
+      height: 60px;
+      input {
+        width: calc(100% - 30px);
+        padding-left: 30px;
+        font-size: 18px;
+        border-radius: 15px 0 0 15px;
+      }
+    }
+    .button__wrapper {
+      width: 200px;
+      height: 60px;
+      button {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 0 15px 15px 0;
+      }
+    }
+  }
+}

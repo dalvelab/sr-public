@@ -20,6 +20,7 @@
       "@actions/*": ["actions/*"],
       "@icons/*": ["common/icons/*"],
       "@styles/*": ["common/styles/*"],
+      "@constants/*": ["constants/*"],
       "@components/*": ["components/*"],
       "@containers/*": ["containers/*"],
       "@models/*": ["models/*"],

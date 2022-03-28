@@ -12,6 +12,16 @@ export const Router: React.FC = () => {
         <Route path={RouterUrl.root().path} element={<LayoutTemplate />}>
           <Route index element={<WelcomePage />} />
           <Route path={RouterUrl.shop().path} element={<StorePage />} />
+          <Route path={RouterUrl.shopItem().path} element={<StorePage />} />
+          <Route
+            path={RouterUrl.shipAndPayment().path}
+            element={<WelcomePage />}
+          />
+          <Route path={RouterUrl.about().path} element={<WelcomePage />} />
+
+          <Route path={RouterUrl.favourite().path} element={<WelcomePage />} />
+          <Route path={RouterUrl.contacts().path} element={<WelcomePage />} />
+          <Route index element={<WelcomePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

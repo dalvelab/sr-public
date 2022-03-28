@@ -11,6 +11,10 @@ export class RouterUrl extends PageUrl implements IUrl {
     return new RouterUrl("/shop");
   }
 
+  static shopItem() {
+    return new RouterUrl("/shop/:id");
+  }
+
   static about() {
     return new RouterUrl("/about");
   }

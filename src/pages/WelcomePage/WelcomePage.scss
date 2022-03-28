@@ -1,0 +1,37 @@
+.welcome__page__form__section {
+  .welcome__page--text-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    .icons__wrapper {
+      display: flex;
+      .icon {
+        width: 120px;
+        height: 120px;
+        background-color: var(--color-primary-light);
+        z-index: 2;
+        border-radius: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 16px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    .text__wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-top: 48px;
+      .welcome__title {
+        font-size: 70px;
+      }
+      .welcome__text {
+        margin-top: 24px;
+        font-size: 24px;
+      }
+    }
+  }
+}
