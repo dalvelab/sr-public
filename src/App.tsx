@@ -1,6 +1,8 @@
 import React from "react";
+import { Provider } from "react-redux";
 
-import { QueryClient, QueryClientProvider } from "react-query";
+import { store } from "@store/store";
+
 import { Router } from "./Routes";
 
 import "./common/styles/colors.css";
@@ -8,12 +10,10 @@ import "./common/styles/fonts.css";
 import "./App.scss";
 
 export const App: React.FC = () => {
-  const queryClient = new QueryClient();
-
   return (
-    <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
       <Router />
-    </QueryClientProvider>
+    </Provider>
   );
 };
 

@@ -26,6 +26,7 @@
       "@models/*": ["models/*"],
       "@pages/*": ["pages/*"],
       "@selectors/*": ["selectors/*"],
+      "@reducers/*": ["reducers/*"],
       "@store/*": ["store/*"],
       "@templates/*": ["templates/*"],
       "@utils/*": ["utils/*"]

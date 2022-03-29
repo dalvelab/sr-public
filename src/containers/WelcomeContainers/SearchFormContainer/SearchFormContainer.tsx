@@ -1,11 +1,10 @@
-import axios from "axios";
-import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import classNames from "classnames";
 import * as Yup from "yup";
 
-import { RouterUrl, ApiStrapiUrl } from "@models/urls";
+import { RouterUrl } from "@models/urls";
 import { Button } from "@components/Buttons";
 
 import "./SearchFormContainer.scss";
@@ -16,15 +15,13 @@ interface ISearchForm {
 
 export const SearchFormContainer: React.FC = () => {
   const navigate = useNavigate();
-
-  const { data, isFetched } = useQuery("itemsCount", () =>
-    axios.get(ApiStrapiUrl.countItems().getOrigin()).then((res) => res.data)
-  );
+  const dispatch = useDispatch();
 
   const initialValues: ISearchForm = { searchInput: "" };
   const searchFormSchema = Yup.object({
     searchInput: Yup.string()
       .min(3, "Минимальное количество символов - 3")
+      .max(35, "Максимальное количество символов - 35")
       .required("Заполните поле для поиска товаров"),
   });
 
@@ -44,9 +41,7 @@ export const SearchFormContainer: React.FC = () => {
         {({ touched, errors }) => (
           <div className="search__form__content">
             <h3 className="search__form__title">
-              Искать среди{" "}
-              <span className="font--primary">{isFetched && data.count}</span>{" "}
-              товаров
+              Искать среди <span className="font--primary"></span> товаров
             </h3>
             <Form className="search__form__wrapper">
               <Field

@@ -4,12 +4,12 @@ import { Badge } from "@components/Badge";
 import { Image } from "@components/Image";
 
 import { RouterUrl } from "@models/urls";
-import { Category } from "@models/data";
+import { ICategory } from "@models/data";
 
 import "./CardCategory.scss";
 
 interface IProps {
-  category: Category;
+  category: ICategory;
 }
 
 export const CardCategory: React.FC<IProps> = (props) => {
