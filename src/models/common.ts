@@ -1,4 +1,4 @@
-export const mediaFilesEndpoing = "http://admin.stresheniya.ru";
+export const mediaFilesEndpoing = "https://admin.stresheniya.ru";
 
 export enum Size {
   SM = "sm",

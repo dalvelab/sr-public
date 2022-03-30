@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://admin.stresheniya.ru/api";
+const API_URL = "https://admin.stresheniya.ru/api";
 
 export const api = axios.create({
   baseURL: `${API_URL}`,
