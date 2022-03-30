@@ -21,7 +21,7 @@ export const CatalogContainer: React.FC = () => {
 
   useEffect(() => {
     dispatch(getShopItems(search, category));
-  }, [dispatch, search]);
+  }, [dispatch, search, category]);
 
   return (
     <section className="store__page__items__container">

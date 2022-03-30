@@ -37,7 +37,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
 
   const initialValues: ICreateForm = {
     item: item,
-    amount: NaN,
+    amount: 0,
     name: "",
     email: "",
     phone: "",
@@ -46,6 +46,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
 
   const createOrderFormSchema = Yup.object({
     amount: Yup.number()
+      .typeError("Количество должно быть числом")
       .min(1, "Минимальное количество - 1")
       .required("Введите примерное количество товара"),
     name: Yup.string()
@@ -149,6 +150,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                         })}
                         type="number"
                         name="amount"
+                        value={0}
                         autoComplete="off"
                         placeholder="Количество (шт)"
                       />
