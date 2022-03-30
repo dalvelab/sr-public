@@ -50,6 +50,9 @@
       .tab__text {
         animation: textOut 0.4s normal;
       }
+      .tab__badge {
+        animation: textOut 0.4s normal;
+      }
     }
   }
 }
@@ -74,6 +77,11 @@
     .tab__wrapper {
       justify-content: center;
       .tab__text {
+        visibility: hidden;
+        position: absolute;
+        opacity: 0;
+      }
+      .tab__badge {
         visibility: hidden;
         position: absolute;
         opacity: 0;

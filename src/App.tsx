@@ -1,7 +1,7 @@
-import React from "react";
-import { Provider } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-import { store } from "@store/store";
+import { getUniqueItemsCount } from "@actions/count";
 
 import { Router } from "./Routes";
 
@@ -10,10 +10,16 @@ import "./common/styles/fonts.css";
 import "./App.scss";
 
 export const App: React.FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUniqueItemsCount());
+  }, [dispatch]);
+
   return (
-    <Provider store={store}>
-      <Router />
-    </Provider>
+    <>
+      <Router />;
+    </>
   );
 };
 

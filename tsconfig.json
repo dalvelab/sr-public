@@ -24,6 +24,7 @@
       "@components/*": ["components/*"],
       "@containers/*": ["containers/*"],
       "@models/*": ["models/*"],
+      "@modals/*": ["modals/*"],
       "@pages/*": ["pages/*"],
       "@selectors/*": ["selectors/*"],
       "@reducers/*": ["reducers/*"],

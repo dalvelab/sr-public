@@ -1,20 +1,13 @@
 import { AnyAction } from "redux";
 
-import { requestItems, getItems, errorItems } from "@actions/shop";
-
-import { IItem } from "@models/data";
-
-interface IItemsState {
-  items: IItem[];
-  count: number;
-  loading: boolean;
-}
-
-const initialState: IItemsState = {
-  items: [],
-  count: 0,
-  loading: false,
-};
+import {
+  requestItems,
+  getItems,
+  errorItems,
+  requestSingleItem,
+  getSingleItem,
+  errorSingleItem,
+} from "@actions/shop";
 
 export const itemsReducer = (
   state = { loading: false, items: [], count: 0 },
@@ -26,9 +19,29 @@ export const itemsReducer = (
     case getItems:
       return {
         loading: false,
-        items: action.payload,
+        count: action.payload.data.length,
+        items: action.payload.data,
       };
     case errorItems:
+      return { loading: false };
+    default:
+      return state;
+  }
+};
+
+export const singleItemReducer = (
+  state = { loading: false, item: {} },
+  action: AnyAction
+) => {
+  switch (action.type) {
+    case requestSingleItem:
+      return { ...state, loading: true };
+    case getSingleItem:
+      return {
+        loading: false,
+        item: action.payload.data,
+      };
+    case errorSingleItem:
       return { loading: false };
     default:
       return state;

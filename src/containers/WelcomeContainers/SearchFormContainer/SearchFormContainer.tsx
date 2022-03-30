@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import classNames from "classnames";
 import * as Yup from "yup";
 
 import { RouterUrl } from "@models/urls";
 import { Button } from "@components/Buttons";
+import { uniqueItemsCountSelector } from "@selectors/count";
 
 import "./SearchFormContainer.scss";
 
@@ -15,7 +16,8 @@ interface ISearchForm {
 
 export const SearchFormContainer: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+  const { count } = useSelector(uniqueItemsCountSelector);
 
   const initialValues: ISearchForm = { searchInput: "" };
   const searchFormSchema = Yup.object({
@@ -41,7 +43,8 @@ export const SearchFormContainer: React.FC = () => {
         {({ touched, errors }) => (
           <div className="search__form__content">
             <h3 className="search__form__title">
-              Искать среди <span className="font--primary"></span> товаров
+              Искать среди <span className="font--primary">{count}</span>{" "}
+              товаров
             </h3>
             <Form className="search__form__wrapper">
               <Field

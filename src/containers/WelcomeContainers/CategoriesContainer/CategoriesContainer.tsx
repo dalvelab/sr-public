@@ -14,7 +14,8 @@ export const CategoriesContainer: React.FC = () => {
 
   useEffect(() => {
     dispatch(getUniqueCategories());
-  }, []);
+  }, [dispatch]);
+
   return (
     <div className="welcome__page__categories__container">
       {loading && <p>Загрузка...</p>}

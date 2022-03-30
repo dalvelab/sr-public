@@ -11,5 +11,15 @@ export interface RootState {
       items: IItem[];
       count: number;
     };
+    singleItemTransaction: {
+      loading: boolean;
+      item: IItem;
+    };
+  };
+  count: {
+    items: {
+      loading: boolean;
+      count: number;
+    };
   };
 }

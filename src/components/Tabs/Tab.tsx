@@ -18,7 +18,7 @@ interface IProps {
 }
 
 export const Tab: React.FC<IProps> = (props) => {
-  const { title, icon: Icon, isActive, onClick, path } = props;
+  const { title, icon: Icon, isActive, onClick, path, children } = props;
 
   const location = useLocation();
 
@@ -37,6 +37,7 @@ export const Tab: React.FC<IProps> = (props) => {
         >
           {Icon && <div className="tab__icon">{Icon}</div>}
           <span className="tab__text">{title}</span>
+          <div className="tab__badge">{children}</div>
         </Link>
       ) : (
         <div
@@ -47,6 +48,7 @@ export const Tab: React.FC<IProps> = (props) => {
         >
           {Icon && <div className="tab__icon">{Icon}</div>}
           <span className="tab__text">{title}</span>
+          <div className="tab__badge">{children}</div>
         </div>
       )}
     </>

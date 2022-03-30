@@ -1,7 +1,5 @@
 import { Dispatch } from "redux";
 
-import { ICategory } from "@models/data";
-
 import { api } from "@constants/common";
 
 const actionPrefix = "SHOP_CATEGORIES";

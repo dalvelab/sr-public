@@ -64,3 +64,14 @@ export interface IMeta {
     total: number;
   };
 }
+
+export interface Order {
+  title: string;
+  orderSum: number;
+  amount: number;
+  name: string;
+  phone: string;
+  email: string;
+  address?: string;
+  status: string;
+}

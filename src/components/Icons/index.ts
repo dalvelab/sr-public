@@ -10,3 +10,4 @@ export * from "./IconLogin";
 export * from "./IconBrickWall";
 export * from "./IconBolt";
 export * from "./IconConstructionTool";
+export * from "./IconClose";

@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+
+import { Badge } from "@components/Badge";
 import { RouterUrl, RouterLinks } from "@models/index";
 
 import {
@@ -15,7 +17,7 @@ interface ITab {
   label: string;
   path: string;
   icon: ReactNode;
-  renderBadge?: () => ReactNode;
+  renderBadge?: (number: number, color: string, bgColor: string) => ReactNode;
 }
 
 export const TabsConfig: ITab[] = [
@@ -30,6 +32,14 @@ export const TabsConfig: ITab[] = [
     label: "Каталог",
     path: RouterUrl.shop().path,
     icon: <IconCatalog color="#7178a1" />,
+    renderBadge: (number: number, color, bgColor) => (
+      <Badge
+        text={number}
+        backgroundColor={bgColor}
+        color={color}
+        padding="4px 8px"
+      />
+    ),
   },
   {
     key: RouterLinks.ABOUT,
