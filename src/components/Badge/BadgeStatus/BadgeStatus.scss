@@ -1,0 +1,14 @@
+.badge__status--success {
+  background-color: var(--color-light-green);
+  color: var(--color-black);
+}
+
+.badge__status--danger {
+  background-color: var(--color-light-red);
+  color: var(--color-black);
+}
+
+.badge__status--primary {
+  background-color: var(--color-primary-7);
+  color: var(--color-black);
+}

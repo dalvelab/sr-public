@@ -5,4 +5,8 @@
   position: relative;
   display: flex;
   margin: 0 auto 0 0;
+  @include screen(tablet-wide) {
+    width: 95%;
+    margin: 0 auto 0 auto;
+  }
 }

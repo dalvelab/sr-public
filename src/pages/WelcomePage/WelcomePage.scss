@@ -20,6 +20,22 @@
           margin-right: 0;
         }
       }
+      @include screen(tablet) {
+        .icon {
+          width: 100px;
+          height: 100px;
+        }
+      }
+      @include screen(phone) {
+        .icon {
+          width: 80px;
+          height: 80px;
+          svg {
+            width: 50px;
+            height: 50px;
+          }
+        }
+      }
     }
     .text__wrapper {
       display: flex;
@@ -31,6 +47,24 @@
       .welcome__text {
         margin-top: 24px;
         font-size: 24px;
+      }
+      @include screen(tablet) {
+        margin-top: 36px;
+        .welcome__title {
+          font-size: 60px;
+        }
+        .welcome__text {
+          margin-top: 20px;
+        }
+      }
+      @include screen(phone) {
+        margin-top: 24px;
+        .welcome__title {
+          font-size: 45px;
+        }
+        .welcome__text {
+          font-size: 20px;
+        }
       }
     }
   }

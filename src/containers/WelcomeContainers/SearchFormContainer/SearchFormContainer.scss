@@ -49,4 +49,49 @@
       color: var(--color-red);
     }
   }
+  @include screen(tablet) {
+    margin-top: 32px;
+    min-height: 250px;
+    .search__form__content {
+      .search__form__title {
+        font-size: 30px;
+      }
+      .search__form__wrapper {
+        .search__input {
+          width: calc(100% - 200px);
+          height: 50px;
+        }
+        .search__button {
+          width: 170px;
+          height: 54px;
+        }
+      }
+    }
+  }
+  @include screen(phone) {
+    min-height: 200px;
+    .search__form__content {
+      width: 90%;
+      min-height: auto;
+      height: auto;
+      .search__form__title {
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+      .search__form__wrapper {
+        .search__input {
+          padding-left: 12px;
+          width: calc(100% - 132px);
+          font-size: 14px;
+        }
+        .search__button {
+          width: 110px;
+          button {
+            font-size: 12px;
+            border-radius: 0 15px 15px 0;
+          }
+        }
+      }
+    }
+  }
 }

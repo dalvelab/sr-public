@@ -110,7 +110,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
         </div>
       ) : (
         <>
-          <h4>Оформление заказа</h4>
+          <h5>Оформление заказа</h5>
           <div className="modal__create__form">
             <Formik
               validateOnChange={false}
@@ -126,6 +126,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                     autoComplete="off"
                   >
                     <div className="input__wrapper">
+                      <label htmlFor="item">Товар</label>
                       <Field
                         className="form__input"
                         type="text"
@@ -135,6 +136,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                       />
                     </div>
                     <div className="input__wrapper">
+                      <label htmlFor="price">Цена товара</label>
                       <Field
                         className="form__input"
                         type="text"
@@ -144,6 +146,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                       />
                     </div>
                     <div className="input__wrapper">
+                      <label htmlFor="price">Количество товара (шт/ед)</label>
                       <Field
                         className={classNames("form__input", {
                           "form__input--error": errors.amount,
@@ -159,6 +162,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                       )}
                     </div>
                     <div className="input__wrapper">
+                      <label htmlFor="name">Ваше Имя</label>
                       <Field
                         className={classNames("form__input", {
                           "form__input--error": errors.name,
@@ -172,6 +176,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                       )}
                     </div>
                     <div className="input__wrapper">
+                      <label htmlFor="email">Ваш Email</label>
                       <Field
                         className={classNames("form__input", {
                           "form__input--error": errors.email,
@@ -185,6 +190,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                       )}
                     </div>
                     <div className="input__wrapper">
+                      <label htmlFor="phone">Ваш телефон</label>
                       <Field
                         className={classNames("form__input", {
                           "form__input--error": errors.phone,
@@ -198,12 +204,13 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                       )}
                     </div>
                     <div className="input__wrapper">
+                      <label htmlFor="address">Адрес доставки</label>
                       <Field
                         className="form__input"
                         type="text"
                         name="address"
                         autoComplete="off"
-                        placeholder="Адрес доставки (если нужна)"
+                        placeholder="Адрес"
                       />
                     </div>
                     <div className="create__order__button">

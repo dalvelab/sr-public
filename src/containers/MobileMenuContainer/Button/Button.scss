@@ -1,0 +1,46 @@
+.nav__mobile__button {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  background-color: var(--color-primary-light);
+  z-index: 10;
+  .bar {
+    height: 1px;
+    background-color: var(--color-primary);
+    margin-top: 7px;
+    transition: transform 0.2s ease-in-out;
+    &:first-child {
+      width: 28px;
+      margin-top: 0;
+    }
+    &:nth-child(2) {
+      width: 18px;
+      transition: 0.2s ease-out;
+    }
+    &:nth-child(3) {
+      width: 23px;
+    }
+  }
+}
+
+.nav__mobile__button--active {
+  .bar {
+    margin: 0;
+    &:first-child {
+      transform-origin: bottom;
+      transform: rotateZ(45deg) translateX(1px);
+      width: 26px;
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:last-child {
+      width: 26px;
+      transform-origin: top;
+      transform: rotateZ(-45deg) translateX(1px);
+    }
+  }
+}

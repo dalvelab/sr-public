@@ -3,10 +3,12 @@
   --color-white: #ffffff;
   --color-primary: #3661ed;
   --color-primary-light: #ebf0fe;
+  --color-primary-7: #dadeff;
   --color-blue-gray: #7178a1;
   --color-light-gray: #f6f7fb;
   --color-light-green: #c4eed7;
   --color-red: #ff4154;
+  --color-light-red: #ffd3dc;
 }
 
 .font--black {

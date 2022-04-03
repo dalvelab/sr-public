@@ -51,6 +51,7 @@ interface IImage {
 }
 
 export interface ICategory {
+  id: string;
   category: string;
   image: string;
   count: number;

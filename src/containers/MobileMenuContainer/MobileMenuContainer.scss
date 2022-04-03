@@ -1,0 +1,25 @@
+.nav__mobile__wrapper {
+  width: 100%;
+  height: 65px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--color-white);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  .container {
+    justify-content: space-between;
+  }
+  .nav__mobile__logo {
+    display: flex;
+    align-items: center;
+    svg {
+      width: 45px;
+      height: 45px;
+    }
+    .logo__text {
+      margin-left: 10px;
+    }
+  }
+}

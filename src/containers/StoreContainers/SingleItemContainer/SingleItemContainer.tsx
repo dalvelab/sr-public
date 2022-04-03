@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { getShopSingleItem } from "@actions/shop";
-import { Badge } from "@components/Badge";
+import { BadgeStatus } from "@components/Badge/BadgeStatus";
 import { Button } from "@components/Buttons";
 import { Image } from "@components/Image";
 import { singleItemSelector } from "@selectors/shop/items";
@@ -21,6 +21,7 @@ export const SingleItemContainer: React.FC = () => {
   const [isOverlay, setIsOverlay] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getShopSingleItem(params.id));
   }, [dispatch]);
 
@@ -51,11 +52,10 @@ export const SingleItemContainer: React.FC = () => {
               />
             </div>
             <div className="item__info">
-              <Badge
+              <BadgeStatus
                 padding="7px 14px"
                 text={item.attributes.status}
-                backgroundColor="#c4eed7"
-                color="#1d2532"
+                status={item.attributes.status}
               />
               <h1 className="item__title">{item.attributes.title}</h1>
               <div className="item__price__wrapper">

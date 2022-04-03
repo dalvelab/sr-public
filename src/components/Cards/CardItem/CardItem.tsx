@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { Button } from "@components/Buttons";
-import { Badge } from "@components/Badge";
+import { BadgeStatus } from "@components/Badge/BadgeStatus";
 import { Image } from "@components/Image";
 
 import { IItem } from "@models/data";
@@ -23,11 +23,10 @@ export const CardItem: React.FC<IProps> = (props) => {
         />
       </div>
       <div className="card__info">
-        <Badge
+        <BadgeStatus
           padding="7px 14px"
           text={item.attributes.status}
-          backgroundColor="#c4eed7"
-          color="#1d2532"
+          status={item.attributes.status}
         />
         <div className="card__itemcode font--blue-gray">
           Артикул: {item.attributes.vendor_code}

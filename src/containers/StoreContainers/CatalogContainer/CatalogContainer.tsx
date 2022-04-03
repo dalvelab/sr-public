@@ -20,6 +20,7 @@ export const CatalogContainer: React.FC = () => {
   const { items, count } = useSelector(itemsSelector);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getShopItems(search, category));
   }, [dispatch, search, category]);
 
