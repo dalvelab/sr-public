@@ -28,7 +28,7 @@ export const MobileMenuContainer: React.FC = () => {
           <Button isActive={isActive} onClick={() => setIsActive(!isActive)} />
         </Container>
       </nav>
-      {isActive && <MobileSidebar />}
+      {isActive && <MobileSidebar onClick={() => setIsActive(false)} />}
     </>
   );
 };

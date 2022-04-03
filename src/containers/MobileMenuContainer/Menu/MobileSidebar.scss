@@ -7,11 +7,100 @@
   background-color: var(--color-white);
   z-index: 8;
   display: flex;
+  padding: 30px;
   .mobile__sidebar__content {
-    width: 300px;
-    height: 300px;
+    width: calc(100% - 60px);
+    height: auto;
     display: flex;
     flex-direction: column;
-    margin: auto;
+    justify-content: center;
+  }
+  .logo__wrapper {
+    display: flex;
+    flex-direction: column;
+    svg {
+      width: 100px;
+      height: 100px;
+    }
+    .logo__text {
+      font-size: 35px;
+      margin-top: 32px;
+    }
+  }
+  .tabs__wrapper {
+    margin-top: 24px;
+    .tab__wrapper {
+      margin-top: 24px;
+      height: 75px;
+      .tab__icon {
+        width: 45px;
+        height: 45px;
+        svg {
+          width: inherit;
+          height: inherit;
+        }
+      }
+      .tab__text {
+        font-size: 30px;
+        margin-left: 10px;
+      }
+      .tab__badge {
+        margin-left: 20px;
+        .badge__wrapper {
+          padding: 7px 14px !important;
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 630px) {
+    padding: 15px;
+    .mobile__sidebar__content {
+      width: calc(100% - 30px);
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .logo__wrapper {
+      justify-content: center;
+      align-items: center;
+      svg {
+        width: 70px;
+        height: 70px;
+      }
+      .logo__text {
+        font-size: 25px;
+        margin-top: 16px;
+      }
+    }
+    .tabs__wrapper {
+      .tab__wrapper {
+        height: 45px;
+        .tab__icon {
+          width: 25px;
+          height: 25px;
+          svg {
+            width: inherit;
+            height: inherit;
+          }
+        }
+        .tab__text {
+          font-size: 18px;
+          margin-left: 0;
+        }
+        .tab__badge {
+          margin-left: 12px;
+          .badge__wrapper {
+            padding: 4px 8px !important;
+            span {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
   }
 }

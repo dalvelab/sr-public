@@ -11,6 +11,10 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   z-index: 10;
+  @include screen(tablet) {
+    width: calc(100% - 40px);
+    height: 100vh;
+  }
   .modal__create__order--close {
     cursor: pointer;
     position: absolute;
@@ -20,6 +24,10 @@
     svg {
       width: 30px;
       height: 30px;
+    }
+    @include screen(tablet) {
+      right: 15px;
+      top: 40px;
     }
   }
   .modal__create__order__success {
@@ -47,6 +55,9 @@
     margin-top: 24px;
     display: flex;
     flex-direction: column;
+    @include screen(tablet) {
+      margin-top: 36px;
+    }
     .input__wrapper {
       margin-top: 24px;
       display: flex;
@@ -82,9 +93,19 @@
         background-color: transparent;
         border-color: var(--color-light-gray);
       }
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
     }
-    .form__input--error {
-      border-color: var(--color-red);
+    .input__wrapper--error {
+      label {
+        color: var(--color-red);
+      }
+      .form__input {
+        border-color: var(--color-red);
+      }
     }
     .create__order__button {
       margin-top: 24px;

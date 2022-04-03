@@ -57,7 +57,10 @@ export const SingleItemContainer: React.FC = () => {
                 text={item.attributes.status}
                 status={item.attributes.status}
               />
-              <h1 className="item__title">{item.attributes.title}</h1>
+              <h1 className="item__title">
+                {item.attributes.title},{" "}
+                {item.attributes.brand.data.attributes.brand}
+              </h1>
               <div className="item__price__wrapper">
                 {item.attributes.old_price && (
                   <div className="item__old__price">

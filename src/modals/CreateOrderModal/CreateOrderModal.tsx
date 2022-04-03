@@ -47,7 +47,7 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
   const createOrderFormSchema = Yup.object({
     amount: Yup.number()
       .typeError("Количество должно быть числом")
-      .min(1, "Минимальное количество - 1")
+      .min(1, "Минимальное количество товара - 1")
       .required("Введите примерное количество товара"),
     name: Yup.string()
       .min(3, "Минимальное количество символов - 3")
@@ -145,12 +145,14 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                         disabled
                       />
                     </div>
-                    <div className="input__wrapper">
+                    <div
+                      className={classNames("input__wrapper", {
+                        "input__wrapper--error": errors.amount,
+                      })}
+                    >
                       <label htmlFor="price">Количество товара (шт/ед)</label>
                       <Field
-                        className={classNames("form__input", {
-                          "form__input--error": errors.amount,
-                        })}
+                        className="form__input"
                         type="number"
                         name="amount"
                         value={0}
@@ -161,12 +163,14 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                         <small>{errors.amount}</small>
                       )}
                     </div>
-                    <div className="input__wrapper">
+                    <div
+                      className={classNames("input__wrapper", {
+                        "input__wrapper--error": errors.name,
+                      })}
+                    >
                       <label htmlFor="name">Ваше Имя</label>
                       <Field
-                        className={classNames("form__input", {
-                          "form__input--error": errors.name,
-                        })}
+                        className="form__input"
                         type="text"
                         name="name"
                         placeholder="Имя"
@@ -175,12 +179,14 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                         <small>{errors.name}</small>
                       )}
                     </div>
-                    <div className="input__wrapper">
+                    <div
+                      className={classNames("input__wrapper", {
+                        "input__wrapper--error": errors.email,
+                      })}
+                    >
                       <label htmlFor="email">Ваш Email</label>
                       <Field
-                        className={classNames("form__input", {
-                          "form__input--error": errors.email,
-                        })}
+                        className="form__input"
                         type="text"
                         name="email"
                         placeholder="Email"
@@ -189,12 +195,14 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                         <small>{errors.email}</small>
                       )}
                     </div>
-                    <div className="input__wrapper">
+                    <div
+                      className={classNames("input__wrapper", {
+                        "input__wrapper--error": errors.phone,
+                      })}
+                    >
                       <label htmlFor="phone">Ваш телефон</label>
                       <Field
-                        className={classNames("form__input", {
-                          "form__input--error": errors.phone,
-                        })}
+                        className="form__input"
                         type="text"
                         name="phone"
                         placeholder="Телефон"
@@ -204,7 +212,9 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                       )}
                     </div>
                     <div className="input__wrapper">
-                      <label htmlFor="address">Адрес доставки</label>
+                      <label htmlFor="address">
+                        Адрес доставки (необязательно)
+                      </label>
                       <Field
                         className="form__input"
                         type="text"

@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-
+import classNames from "classnames";
+import { includes } from "ramda";
 import { useLocation } from "react-router-dom";
+
+import { TabsConfig } from "@constants/tabs";
 import { Divider } from "@components/UI";
 import { IconEnvelope, IconLogo, IconLogin } from "@components/Icons";
 import { Tab } from "@components/Tabs";
 import { RouterLinks } from "@models/routes";
 import { uniqueItemsCountSelector } from "@selectors/count";
-import { includes } from "ramda";
-
-import classNames from "classnames";
-
-import { TabsConfig } from "./Tabs";
 
 import "./SidebarContainer.scss";
 

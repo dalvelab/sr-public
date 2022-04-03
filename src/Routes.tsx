@@ -1,7 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { WelcomePage, StorePage, SingleItemPage } from "@pages/index";
+import {
+  WelcomePage,
+  StorePage,
+  SingleItemPage,
+  AboutPage,
+  ShipAndPaymentPage,
+} from "@pages/index";
 import { RouterUrl } from "@models/urls";
 import { LayoutTemplate } from "@templates/LayoutTemplate";
 
@@ -16,11 +22,11 @@ export const Router: React.FC = () => {
             path={RouterUrl.shopItem().path}
             element={<SingleItemPage />}
           />
+          <Route path={RouterUrl.about().path} element={<AboutPage />} />
           <Route
             path={RouterUrl.shipAndPayment().path}
-            element={<WelcomePage />}
+            element={<ShipAndPaymentPage />}
           />
-          <Route path={RouterUrl.about().path} element={<WelcomePage />} />
 
           <Route path={RouterUrl.favourite().path} element={<WelcomePage />} />
           <Route path={RouterUrl.contacts().path} element={<WelcomePage />} />

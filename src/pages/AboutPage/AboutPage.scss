@@ -1,0 +1,13 @@
+.section__about__page {
+  .section__title {
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 2;
+    @include screen(phone) {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+  }
+}

@@ -37,6 +37,30 @@ export interface IItem {
         attributes: IImage;
       };
     };
+    brand: {
+      data: {
+        id: number;
+        attributes: {
+          brand: string;
+        };
+      };
+    };
+    category: {
+      data: {
+        id: number;
+        attributes: {
+          category: string;
+        };
+      };
+    };
+    subcategory: {
+      data: {
+        id: number;
+        attributes: {
+          subcategory: string;
+        };
+      };
+    };
   };
 }
 
