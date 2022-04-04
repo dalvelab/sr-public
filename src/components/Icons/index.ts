@@ -11,3 +11,4 @@ export * from "./IconBrickWall";
 export * from "./IconBolt";
 export * from "./IconConstructionTool";
 export * from "./IconClose";
+export * from "./IconChevron";

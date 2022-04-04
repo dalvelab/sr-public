@@ -21,5 +21,13 @@
     .logo__text {
       margin-left: 10px;
     }
+    @include screen(phone) {
+      svg {
+        display: none;
+      }
+      .logo__text {
+        margin-left: 0;
+      }
+    }
   }
 }

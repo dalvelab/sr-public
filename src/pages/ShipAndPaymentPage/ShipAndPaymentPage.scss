@@ -1,0 +1,22 @@
+.ship__and__payment__page {
+  .collapse__wrapper__block {
+    width: 840px;
+    height: auto;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .collapse__row {
+    width: calc(100% - 60px);
+    margin: 0 0 0 60px;
+  }
+  @include screen(tablet-wide) {
+    .collapse__wrapper__block {
+      width: 100%;
+    }
+    .collapse__row {
+      width: calc(100% - 30px);
+      margin-left: 0;
+    }
+  }
+}

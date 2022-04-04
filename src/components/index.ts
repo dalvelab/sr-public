@@ -4,3 +4,4 @@ export * from "./Icons";
 export * from "./Buttons";
 export * from "./Badge";
 export * from "./Image";
+export * from "./Collapse";
