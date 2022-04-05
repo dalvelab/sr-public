@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 import { getShopSingleItem } from "@actions/shop";
 import { BadgeStatus } from "@components/Badge/BadgeStatus";
@@ -9,6 +10,8 @@ import { Image } from "@components/Image";
 import { singleItemSelector } from "@selectors/shop/items";
 import { CreateOrderModal } from "../../../modals/CreateOrderModal";
 import { notEmpty } from "@utils/common";
+
+import { ItemDetailsRow } from "./ItemDetailsRow";
 
 import "./SingleItemContainer.scss";
 
@@ -30,8 +33,6 @@ export const SingleItemContainer: React.FC = () => {
     setIsOpened(true);
     setIsOverlay(true);
   };
-
-  console.log(item);
 
   return (
     <div className="single__item__wrapper">
@@ -60,11 +61,7 @@ export const SingleItemContainer: React.FC = () => {
                 text={item.attributes.status}
                 status={item.attributes.status}
               />
-              <h1 className="item__title">
-                {item.attributes.title},{" "}
-                {notEmpty(item.attributes.brand.data) &&
-                  item.attributes.brand.data.attributes.brand}
-              </h1>
+              <h1 className="item__title">{item.attributes.title} </h1>
               <div className="item__price__wrapper">
                 {item.attributes.old_price && (
                   <div className="item__old__price">
@@ -90,103 +87,111 @@ export const SingleItemContainer: React.FC = () => {
           <div className="item__description__wrapper">
             <h4>Характеристики</h4>
             <div className="item__description__container">
-              <div className="description__column">
-                <div className="item__description">
-                  <span className="description__title">Длина:</span>
-                  <span className="description__content">
-                    {item.attributes.length} {item.attributes.length_units}
-                  </span>
+              {(notEmpty(item.attributes.color) ||
+                notEmpty(item.attributes.mark) ||
+                notEmpty(item.attributes.vendor_code)) && (
+                <div className="description__column">
+                  <h6>Основные</h6>
+                  <ItemDetailsRow
+                    title="Бренд"
+                    content={
+                      notEmpty(item.attributes.brand.data)
+                        ? item.attributes.brand.data.attributes.brand
+                        : undefined
+                    }
+                  />
+                  <ItemDetailsRow
+                    title="Цвет"
+                    content={item.attributes.color}
+                  />
+                  <ItemDetailsRow
+                    title="Марка"
+                    content={item.attributes.mark}
+                  />
+                  <ItemDetailsRow
+                    title="Артикул"
+                    content={item.attributes.vendor_code}
+                  />
                 </div>
-                <div className="item__description">
-                  <span className="description__title">Ширина:</span>
-                  <span className="description__content">
-                    {item.attributes.width} {item.attributes.weight_units}
-                  </span>
+              )}
+              {(notEmpty(item.attributes.length) ||
+                notEmpty(item.attributes.weight) ||
+                notEmpty(item.attributes.height) ||
+                notEmpty(item.attributes.thickness) ||
+                notEmpty(item.attributes.volume) ||
+                notEmpty(item.attributes.weight)) && (
+                <div className="description__column">
+                  <h6>Размеры</h6>
+                  <ItemDetailsRow
+                    title="Длина"
+                    content={item.attributes.length}
+                    units={item.attributes.length_units}
+                  />
+                  <ItemDetailsRow
+                    title="Ширина"
+                    content={item.attributes.width}
+                    units={item.attributes.width_units}
+                  />
+                  <ItemDetailsRow
+                    title="Высота"
+                    content={item.attributes.height}
+                    units={item.attributes.height_units}
+                  />
+                  <ItemDetailsRow
+                    title="Толщина"
+                    content={item.attributes.thickness}
+                    units={item.attributes.thickness_units}
+                  />
+                  <ItemDetailsRow
+                    title="Объем"
+                    content={item.attributes.volume}
+                    units={item.attributes.volume_units}
+                  />
+                  <ItemDetailsRow
+                    title="Масса"
+                    content={item.attributes.weight}
+                    units={item.attributes.weight_units}
+                  />
                 </div>
-                <div className="item__description">
-                  <span className="description__title">Высота:</span>
-                  <span className="description__content">
-                    {item.attributes.height} {item.attributes.height_units}
-                  </span>
+              )}
+              {(notEmpty(item.attributes.density) ||
+                notEmpty(item.attributes.layer_thickness) ||
+                notEmpty(item.attributes.application_method) ||
+                notEmpty(item.attributes.application_area) ||
+                notEmpty(item.attributes.type_of_work)) && (
+                <div className="description__column">
+                  <h6>Специальные</h6>
+                  <ItemDetailsRow
+                    title="Плотность"
+                    content={item.attributes.density}
+                    units={item.attributes.density_units}
+                  />
+                  <ItemDetailsRow
+                    title="Толщина слоя"
+                    content={item.attributes.layer_thickness}
+                    units={item.attributes.layer_thickness_units}
+                  />
+                  <ItemDetailsRow
+                    title="Метод нанесения"
+                    content={item.attributes.application_method}
+                  />
+                  <ItemDetailsRow
+                    title="Место нанесения"
+                    content={item.attributes.application_area}
+                  />
+                  <ItemDetailsRow
+                    title="Тип работ"
+                    content={item.attributes.type_of_work}
+                  />
                 </div>
-                <div className="item__description">
-                  <span className="description__title">Толщина:</span>
-                  <span className="description__content">
-                    {item.attributes.thickness}{" "}
-                    {item.attributes.thickness_units}
-                  </span>
-                </div>
-                <div className="item__description">
-                  <span className="description__title">Объем:</span>
-                  <span className="description__content">
-                    {item.attributes.volume} {item.attributes.volume_units}
-                  </span>
-                </div>
-              </div>
-              <div className="description__column">
-                <div className="item__description">
-                  <span className="description__title">Масса:</span>
-                  <span className="description__content">
-                    {item.attributes.weight} {item.attributes.weight_units}
-                  </span>
-                </div>
-                <div className="item__description">
-                  <span className="description__title">Плотность:</span>
-                  <span className="description__content">
-                    {item.attributes.density} {item.attributes.density_units}
-                  </span>
-                </div>
-                <div className="item__description">
-                  <span className="description__title">Толщина слоя:</span>
-                  <span className="description__content">
-                    {item.attributes.layer_thickness}{" "}
-                    {item.attributes.layer_thickness_units}
-                  </span>
-                </div>
-                <div className="item__description">
-                  <span className="description__title">Метод нанесения:</span>
-                  <span className="description__content">
-                    {item.attributes.application_method}
-                  </span>
-                </div>
-                <div className="item__description">
-                  <span className="description__title">Тип работ:</span>
-                  <span className="description__content">
-                    {item.attributes.type_of_work}
-                  </span>
-                </div>
-              </div>
-              <div className="column">
-                <div className="item__description">
-                  <span className="description__title">Место нанесения:</span>
-                  <span className="description__content">
-                    {item.attributes.application_area}
-                  </span>
-                </div>
-                <div className="item__description">
-                  <span className="description__title">Цвет:</span>
-                  <span className="description__content">
-                    {item.attributes.color}
-                  </span>
-                </div>
-                <div className="item__description">
-                  <span className="description__title">Марка:</span>
-                  <span className="description__content">
-                    {item.attributes.mark}
-                  </span>
-                </div>
-                <div className="item__description">
-                  <span className="description__title">Артикул:</span>
-                  <span className="description__content">
-                    {item.attributes.vendor_code}
-                  </span>
-                </div>
-              </div>
+              )}
             </div>
           </div>
           <div className="item__description__wrapper">
             <h4>Описание товара</h4>
-            <p className="item__text">{item.attributes.Description}</p>
+            <div className="content__wrapper">
+              <ReactMarkdown>{item.attributes.description}</ReactMarkdown>
+            </div>
           </div>
         </>
       )}

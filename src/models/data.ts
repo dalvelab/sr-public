@@ -30,7 +30,7 @@ export interface IItem {
     weight_units?: string;
     layer_thickness_units?: string;
     density_units?: string;
-    Description?: string;
+    description: string;
     image: {
       data: {
         id: number;
