@@ -8,6 +8,7 @@ import { Button } from "@components/Buttons";
 import { Image } from "@components/Image";
 import { singleItemSelector } from "@selectors/shop/items";
 import { CreateOrderModal } from "../../../modals/CreateOrderModal";
+import { notEmpty } from "@utils/common";
 
 import "./SingleItemContainer.scss";
 
@@ -29,6 +30,8 @@ export const SingleItemContainer: React.FC = () => {
     setIsOpened(true);
     setIsOverlay(true);
   };
+
+  console.log(item);
 
   return (
     <div className="single__item__wrapper">
@@ -59,7 +62,8 @@ export const SingleItemContainer: React.FC = () => {
               />
               <h1 className="item__title">
                 {item.attributes.title},{" "}
-                {item.attributes.brand.data.attributes.brand}
+                {notEmpty(item.attributes.brand.data) &&
+                  item.attributes.brand.data.attributes.brand}
               </h1>
               <div className="item__price__wrapper">
                 {item.attributes.old_price && (

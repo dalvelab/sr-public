@@ -1,0 +1,61 @@
+.contacts__page__section {
+  .company__requisites__wrapper,
+  .company__address__wrapper {
+    margin: 24px 0 24px 0;
+    display: flex;
+    flex-direction: column;
+    .company__requisites__row,
+    .company__address__row {
+      margin-top: 16px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      span {
+        font-size: 20px;
+      }
+      .requisites__title,
+      .address__title {
+        font-weight: 500;
+      }
+      .requisites__content,
+      .address__content {
+        margin-left: 8px;
+        color: var(--color-blue-gray);
+      }
+      .address__content {
+        a {
+          font-size: 20px;
+          color: var(--color-blue-gray);
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+      }
+      @media screen and (max-width: 620px) {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        span {
+          font-size: 18px;
+        }
+        .requisites__content,
+        .address__content {
+          margin-top: 8px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  .yandex__map__wrapper {
+    margin: 36px 0 24px 0;
+    iframe {
+      width: 100%;
+      border-radius: 12px;
+    }
+    @media screen and (max-width: 620px) {
+      iframe {
+        height: 350px;
+      }
+    }
+  }
+}

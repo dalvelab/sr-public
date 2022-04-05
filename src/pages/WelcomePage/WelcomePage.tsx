@@ -46,10 +46,10 @@ export const WelcomePage: React.FC = () => {
         <h2>Категории товаров</h2>
         <CategoriesContainer />
       </section>
-      <section className="welcome__page__special__offers__section">
+      {/* <section className="welcome__page__special__offers__section">
         <h2>Специальные предложения</h2>
         <SpecialOfferContainer />
-      </section>
+      </section> */}
     </section>
   );
 };

@@ -23,7 +23,7 @@ export const LayoutTemplate: React.FC = () => {
       )}
       {isMobileScreen && <MobileMenuContainer />}
       <MainContainer
-        marginLeft={!isMobileScreen ? (isCollapsed ? "60px" : "280px") : "0px"}
+        marginLeft={!isMobileScreen ? (isCollapsed ? "120px" : "320px") : "0px"}
       >
         <Outlet />
       </MainContainer>
