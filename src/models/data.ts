@@ -7,6 +7,8 @@ export interface IItem {
     updatedAt: Date;
     price: number;
     status: ItemStatuses;
+    amount_units: string;
+    country_manufacturer: string;
     old_price?: number;
     width?: number;
     height?: number;

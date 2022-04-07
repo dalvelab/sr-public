@@ -14,6 +14,7 @@ interface IProps {
 
 export const CardItem: React.FC<IProps> = (props) => {
   const { item } = props;
+
   return (
     <div className="card__item">
       <div className="card__image">
@@ -36,10 +37,12 @@ export const CardItem: React.FC<IProps> = (props) => {
       <div className="card__prices__wrapper">
         {item.attributes.old_price && (
           <div className="card__old__price">
-            {item.attributes.old_price} ₽ за шт.
+            {item.attributes.old_price} ₽ за {item.attributes.amount_units}.
           </div>
         )}
-        <div className="card__price">{item.attributes.price} ₽ за шт.</div>
+        <div className="card__price">
+          {item.attributes.price} ₽ за {item.attributes.amount_units}
+        </div>
       </div>
       <div className="card__button__wrapper">
         <Link to={`/shop/${item.attributes.slug}`}>

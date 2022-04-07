@@ -34,6 +34,8 @@ export const SingleItemContainer: React.FC = () => {
     setIsOverlay(true);
   };
 
+  console.log(item);
+
   return (
     <div className="single__item__wrapper">
       {loading || !item.attributes ? (
@@ -65,11 +67,12 @@ export const SingleItemContainer: React.FC = () => {
               <div className="item__price__wrapper">
                 {item.attributes.old_price && (
                   <div className="item__old__price">
-                    {item.attributes.old_price} ₽ за шт
+                    {item.attributes.old_price} ₽ за{" "}
+                    {item.attributes.amount_units}
                   </div>
                 )}
                 <div className="item__price">
-                  {item.attributes.price} ₽ за шт
+                  {item.attributes.price} ₽ за {item.attributes.amount_units}
                 </div>
               </div>
               <div className="item__button">
@@ -89,7 +92,8 @@ export const SingleItemContainer: React.FC = () => {
             <div className="item__description__container">
               {(notEmpty(item.attributes.color) ||
                 notEmpty(item.attributes.mark) ||
-                notEmpty(item.attributes.vendor_code)) && (
+                notEmpty(item.attributes.vendor_code) ||
+                notEmpty(item.attributes.country_manufacturer)) && (
                 <div className="description__column">
                   <h6>Основные</h6>
                   <ItemDetailsRow
@@ -99,6 +103,10 @@ export const SingleItemContainer: React.FC = () => {
                         ? item.attributes.brand.data.attributes.brand
                         : undefined
                     }
+                  />
+                  <ItemDetailsRow
+                    title="Страна производитель"
+                    content={item.attributes.country_manufacturer}
                   />
                   <ItemDetailsRow
                     title="Цвет"
