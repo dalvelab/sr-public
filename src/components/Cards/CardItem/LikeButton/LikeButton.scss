@@ -1,0 +1,14 @@
+.card__categody__like__button {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary-light);
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px #d1d1d1;
+}
+
+.card__categody__like__button--liked {
+  background-color: var(--color-primary);
+}

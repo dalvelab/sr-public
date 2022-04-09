@@ -8,6 +8,7 @@ import {
   AboutPage,
   ShipAndPaymentPage,
   ContactsPage,
+  FavouritePage,
 } from "@pages/index";
 import { RouterUrl } from "@models/urls";
 import { LayoutTemplate } from "@templates/LayoutTemplate";
@@ -29,7 +30,10 @@ export const Router: React.FC = () => {
             element={<ShipAndPaymentPage />}
           />
 
-          <Route path={RouterUrl.favourite().path} element={<WelcomePage />} />
+          <Route
+            path={RouterUrl.favourite().path}
+            element={<FavouritePage />}
+          />
           <Route path={RouterUrl.contacts().path} element={<ContactsPage />} />
           <Route index element={<WelcomePage />} />
         </Route>

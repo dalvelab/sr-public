@@ -6,10 +6,15 @@ import {
   errorItemsCount,
 } from "@actions/count";
 
+export interface IUniqueItemsReducer {
+  loading: boolean;
+  count?: number;
+}
+
 export const uniqueItemsCountReducer = (
-  state = { loading: false, count: 0 },
+  state: IUniqueItemsReducer = { loading: false, count: 0 },
   action: AnyAction
-) => {
+): IUniqueItemsReducer => {
   switch (action.type) {
     case requestItemsCount:
       return { ...state, loading: true };

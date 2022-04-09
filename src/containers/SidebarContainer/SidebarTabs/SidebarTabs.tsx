@@ -1,8 +1,11 @@
 import { useState, ReactNode } from "react";
 import { useSelector } from "react-redux";
 
-import { RouterUrl, RouterLinks } from "@models/index";
 import { Tab } from "@components/Tabs";
+import { RouterUrl, RouterLinks } from "@models/index";
+import { uniqueItemsCountSelector } from "@selectors/count";
+import { favouriteItemsSelectorIds } from "@selectors/shop";
+
 import {
   IconHome,
   IconCatalog,
@@ -11,15 +14,6 @@ import {
   IconShipping,
   IconLike,
 } from "@components/Icons";
-import { IconLogo } from "@components/Icons";
-import { uniqueItemsCountSelector } from "@selectors/count";
-import { favouriteItemsSelectorIds } from "@selectors/shop";
-
-import "./MobileSidebar.scss";
-
-interface IProps {
-  onClick: () => void;
-}
 
 interface ITab {
   key: RouterLinks;
@@ -29,9 +23,7 @@ interface ITab {
   badge?: string | number;
 }
 
-export const MobileSidebar: React.FC<IProps> = (props) => {
-  const { onClick } = props;
-
+export const SidebarTabs: React.FC = () => {
   const { count } = useSelector(uniqueItemsCountSelector);
   const { id: favouriteItemsIds } = useSelector(favouriteItemsSelectorIds);
 
@@ -39,7 +31,6 @@ export const MobileSidebar: React.FC<IProps> = (props) => {
 
   const handleTabClick = (key: RouterLinks) => {
     setIsActive(key);
-    onClick();
   };
 
   const TabsConfig: ITab[] = [
@@ -84,29 +75,18 @@ export const MobileSidebar: React.FC<IProps> = (props) => {
   ];
 
   return (
-    <div className="mobile__sidebar">
-      <div className="mobile__sidebar__content">
-        <div className="logo__wrapper">
-          <IconLogo color="#3661ed" />
-          <h6 className="logo__text">
-            <span className="font--primary">Строительные</span>{" "}
-            <span className="font--black">Решения</span>
-          </h6>
-        </div>
-        <div className="tabs__wrapper">
-          {TabsConfig.map((tab) => (
-            <Tab
-              path={tab.path}
-              isActive={isActive === tab.key}
-              key={tab.key}
-              title={tab.label}
-              icon={tab.icon}
-              onClick={() => handleTabClick(tab.key)}
-              badge={tab.badge}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+    <>
+      {TabsConfig.map((tab) => (
+        <Tab
+          path={tab.path}
+          isActive={isActive === tab.key}
+          key={tab.key}
+          title={tab.label}
+          icon={tab.icon}
+          onClick={() => handleTabClick(tab.key)}
+          badge={tab.badge}
+        />
+      ))}
+    </>
   );
 };

@@ -1,4 +1,4 @@
-import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
@@ -17,3 +17,5 @@ export const store = createStore(
   combineReducers({ ...SRPublicAppState }),
   composedEnhancers
 );
+
+export const getStore = () => store.getState();

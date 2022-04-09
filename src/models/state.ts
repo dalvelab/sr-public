@@ -15,6 +15,15 @@ export interface RootState {
       loading: boolean;
       item: IItem;
     };
+    favouriteItems: {
+      items_id: {
+        id: Array<number>;
+      };
+      items: {
+        loading: boolean;
+        items: IItem[];
+      };
+    };
   };
   count: {
     items: {

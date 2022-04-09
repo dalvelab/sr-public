@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { includes } from "ramda";
 
+import { addShopFavouriteItem } from "@actions/shop";
 import { Button } from "@components/Buttons";
 import { BadgeStatus } from "@components/Badge/BadgeStatus";
 import { Image } from "@components/Image";
-
 import { IItem } from "@models/data";
+import { favouriteItemsSelectorIds } from "@selectors/shop";
+
+import { LikeButton } from "./LikeButton";
 
 import "./CardItem.scss";
 
@@ -15,8 +20,20 @@ interface IProps {
 export const CardItem: React.FC<IProps> = (props) => {
   const { item } = props;
 
+  const dispatch = useDispatch();
+
+  const { id } = useSelector(favouriteItemsSelectorIds);
+
+  const handleLikeClick = (id: number) => {
+    dispatch(addShopFavouriteItem(id));
+  };
+
   return (
     <div className="card__item">
+      <LikeButton
+        onClick={() => handleLikeClick(item.id)}
+        isLiked={includes(item.id, id)}
+      />
       <div className="card__image">
         <Image
           url={item.attributes.image.data.attributes.url}

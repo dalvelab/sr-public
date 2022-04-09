@@ -7,6 +7,11 @@ import {
   requestSingleItem,
   getSingleItem,
   errorSingleItem,
+  getFavouriteItemsFromLS,
+  addFavouriteItemToLS,
+  requestFavouriteItems,
+  getFavouriteItems,
+  errorFavouriteItems,
 } from "@actions/shop";
 
 export const itemsReducer = (
@@ -42,6 +47,43 @@ export const singleItemReducer = (
         item: action.payload.data,
       };
     case errorSingleItem:
+      return { loading: false };
+    default:
+      return state;
+  }
+};
+
+export const favouriteItemsFromLSReducer = (
+  state = { id: [] },
+  action: AnyAction
+) => {
+  switch (action.type) {
+    case getFavouriteItemsFromLS:
+      return {
+        id: action.payload,
+      };
+    case addFavouriteItemToLS:
+      return {
+        id: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const favouriteItemsReducer = (
+  state = { loading: false, items: [] },
+  action: AnyAction
+) => {
+  switch (action.type) {
+    case requestFavouriteItems:
+      return { ...state, loading: true };
+    case getFavouriteItems:
+      return {
+        loading: false,
+        items: action.payload.data,
+      };
+    case errorFavouriteItems:
       return { loading: false };
     default:
       return state;

@@ -4,6 +4,9 @@ import { RouterUrl } from "@models/urls";
 
 import { includes } from "ramda";
 
+import { Badge } from "@components/Badge";
+import { isVoid } from "@utils/common";
+
 import classNames from "classnames";
 
 import "./Tab.scss";
@@ -13,12 +16,18 @@ interface IProps {
   path?: string;
   isActive: boolean;
   icon?: ReactNode;
-  badge?: string;
+  badge?: string | number;
+  badgeProps?: {
+    color: string;
+    bgColor: string;
+    activeColor: string;
+    activeBgColor: string;
+  };
   onClick: () => void;
 }
 
 export const Tab: React.FC<IProps> = (props) => {
-  const { title, icon: Icon, isActive, onClick, path, children } = props;
+  const { title, icon: Icon, badge, isActive, onClick, path } = props;
 
   const location = useLocation();
 
@@ -37,7 +46,20 @@ export const Tab: React.FC<IProps> = (props) => {
         >
           {Icon && <div className="tab__icon">{Icon}</div>}
           <span className="tab__text">{title}</span>
-          <div className="tab__badge">{children}</div>
+          {!isVoid(badge) && (
+            <div className="tab__badge">
+              <Badge
+                text={badge}
+                backgroundColor={
+                  includes(path, location.pathname) ? "#3661ed" : "#ebf0fe"
+                }
+                color={
+                  includes(path, location.pathname) ? "#ebf0fe" : "#3661ed"
+                }
+                padding="4px 8px"
+              />
+            </div>
+          )}
         </Link>
       ) : (
         <div
@@ -48,7 +70,6 @@ export const Tab: React.FC<IProps> = (props) => {
         >
           {Icon && <div className="tab__icon">{Icon}</div>}
           <span className="tab__text">{title}</span>
-          <div className="tab__badge">{children}</div>
         </div>
       )}
     </>

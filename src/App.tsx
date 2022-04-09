@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { getUniqueItemsCount } from "@actions/count";
+import { getShopFavoruiteItemsFromLS } from "@actions/shop";
 
 import { Router } from "./Routes";
 
@@ -14,6 +15,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     dispatch(getUniqueItemsCount());
+    dispatch(getShopFavoruiteItemsFromLS());
   }, [dispatch]);
 
   return (

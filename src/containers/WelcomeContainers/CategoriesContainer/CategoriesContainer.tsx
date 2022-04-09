@@ -19,8 +19,8 @@ export const CategoriesContainer: React.FC = () => {
   return (
     <div className="welcome__page__categories__container">
       {loading && <p>Загрузка...</p>}
-      {categories.map((category) => (
-        <CardCategory key={category.id} category={category} />
+      {categories.map((category, index) => (
+        <CardCategory key={index} category={category} />
       ))}
     </div>
   );

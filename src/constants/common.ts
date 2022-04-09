@@ -8,3 +8,6 @@ export const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const BLANK_STRING = "";
+export const APP_NAME = "SR_PUBLIC";

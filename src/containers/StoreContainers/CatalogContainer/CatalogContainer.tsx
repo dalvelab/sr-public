@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { getShopItems } from "@actions/shop";
 import { CardItem } from "@components/Cards";
-import { itemsSelector } from "@selectors/shop/items";
+import { itemsSelector } from "@selectors/shop";
 import { notEmpty } from "@utils/common";
 
 import "./CatalogContainer.scss";
