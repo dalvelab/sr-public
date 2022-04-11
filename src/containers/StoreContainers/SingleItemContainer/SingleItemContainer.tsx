@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
 import { getShopSingleItem } from "@actions/shop";
-import { BadgeStatus } from "@components/Badge/BadgeStatus";
-import { Button } from "@components/Buttons";
+import { BadgeStatus } from "@components/Badge";
+import { Button } from "@components/Buttons/Button";
 import { Image } from "@components/Image";
 import { singleItemSelector } from "@selectors/shop/items";
 import { CreateOrderModal } from "../../../modals/CreateOrderModal";

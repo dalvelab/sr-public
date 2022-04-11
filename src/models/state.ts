@@ -2,6 +2,9 @@ import { ICategory, IItem } from "./data";
 
 export interface RootState {
   shop: {
+    sorting: {
+      sortBy: string | undefined;
+    };
     categoriesTransaction: {
       loading: boolean;
       categories: ICategory[];

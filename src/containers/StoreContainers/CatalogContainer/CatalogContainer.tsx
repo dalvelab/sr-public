@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
-import { getShopItems } from "@actions/shop";
+import { getShopItems, getShopSortingAction } from "@actions/shop";
 import { CardItem } from "@components/Cards";
-import { itemsSelector } from "@selectors/shop";
+import { ButtonDropdown } from "@components/Buttons";
+import { itemsSelector, itemsSortSelector } from "@selectors/shop";
 import { notEmpty } from "@utils/common";
 
 import "./CatalogContainer.scss";
@@ -18,14 +19,44 @@ export const CatalogContainer: React.FC = () => {
   const category = searchParams.get("category");
 
   const { items, count } = useSelector(itemsSelector);
+  const { sortBy } = useSelector(itemsSortSelector);
+
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getShopItems(search, category));
   }, [dispatch, search, category]);
 
+  const handleButtonDropdown = () => {
+    setIsActive(!isActive);
+  };
+
+  const handleButtonDropdownRowClick = (sortOption: string) => {
+    setIsActive(false);
+    dispatch(getShopSortingAction(sortOption));
+  };
+
+  const sortOptions = [
+    "По наименованию",
+    "По убыванию цены",
+    "По возрастанию цены",
+  ];
+
   return (
     <section className="store__page__items__container">
+      <div className="store__page__filters">
+        <ButtonDropdown
+          label="Сортировка:"
+          activeOption={sortBy}
+          options={sortOptions}
+          isActive={isActive}
+          onClick={() => handleButtonDropdown()}
+          onOptionClick={(sortBy: string) =>
+            handleButtonDropdownRowClick(sortBy)
+          }
+        />
+      </div>
       <div className="items__info">
         {notEmpty(search) && !category && (
           <div className="search__info">

@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { includes, remove } from "ramda";
+import { includes } from "ramda";
 
 import { api, APP_NAME } from "@constants/common";
 import { isVoid } from "@utils/common";

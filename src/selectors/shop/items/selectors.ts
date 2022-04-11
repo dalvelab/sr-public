@@ -3,6 +3,11 @@ import { createSelector } from "reselect";
 import { RootState } from "@models/state";
 import { isVoid } from "@utils/common";
 
+export const itemsSortSelector = createSelector(
+  (state: RootState) => state.shop.sorting,
+  (sort) => sort
+);
+
 export const itemsSelector = createSelector(
   (state: RootState) => state.shop.itemsTransaction,
   (items) => items

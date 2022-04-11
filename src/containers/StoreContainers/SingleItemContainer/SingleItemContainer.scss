@@ -52,6 +52,9 @@
       .item__title {
         margin-top: 8px;
         font-size: 30px;
+        @include screen(phone) {
+          font-size: 25px;
+        }
       }
       .item__price__wrapper {
         display: flex;
@@ -67,6 +70,15 @@
           font-size: 25px;
           margin-top: 4px;
         }
+        @include screen(phone) {
+          margin-top: 12px;
+          .item__old__price {
+            font-size: 15px;
+          }
+          .item__price {
+            font-size: 22px;
+          }
+        }
       }
       .item__button {
         margin-top: 20px;
@@ -74,6 +86,9 @@
           font-weight: 500;
           font-size: 18px;
           border-radius: 4px;
+          @include screen(phone) {
+            font-size: 16px;
+          }
         }
       }
     }
