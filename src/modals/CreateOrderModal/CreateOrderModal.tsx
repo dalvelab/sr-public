@@ -155,7 +155,6 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
                         className="form__input"
                         type="number"
                         name="amount"
-                        value={0}
                         autoComplete="off"
                         placeholder="Количество (шт)"
                       />

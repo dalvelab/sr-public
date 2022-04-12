@@ -45,18 +45,6 @@ export const CatalogContainer: React.FC = () => {
 
   return (
     <section className="store__page__items__container">
-      <div className="store__page__filters">
-        <ButtonDropdown
-          label="Сортировка:"
-          activeOption={sortBy}
-          options={sortOptions}
-          isActive={isActive}
-          onClick={() => handleButtonDropdown()}
-          onOptionClick={(sortBy: string) =>
-            handleButtonDropdownRowClick(sortBy)
-          }
-        />
-      </div>
       <div className="items__info">
         {notEmpty(search) && !category && (
           <div className="search__info">
@@ -69,6 +57,18 @@ export const CatalogContainer: React.FC = () => {
             Найдено {count} товар(ов) в категории: {category}
           </div>
         )}
+      </div>
+      <div className="store__page__filters">
+        <ButtonDropdown
+          label="Сортировка:"
+          activeOption={sortBy}
+          options={sortOptions}
+          isActive={isActive}
+          onClick={() => handleButtonDropdown()}
+          onOptionClick={(sortBy: string) =>
+            handleButtonDropdownRowClick(sortBy)
+          }
+        />
       </div>
       <div className="card__items__wrapper">
         {items.map((item) => (
