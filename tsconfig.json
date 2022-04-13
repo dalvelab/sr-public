@@ -23,6 +23,7 @@
       "@constants/*": ["constants/*"],
       "@components/*": ["components/*"],
       "@containers/*": ["containers/*"],
+      "@hooks/*": ["hooks/*"],
       "@models/*": ["models/*"],
       "@modals/*": ["modals/*"],
       "@pages/*": ["pages/*"],

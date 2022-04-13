@@ -34,8 +34,6 @@ export const SingleItemContainer: React.FC = () => {
     setIsOverlay(true);
   };
 
-  console.log(item);
-
   return (
     <div className="single__item__wrapper">
       {loading || !item.attributes ? (

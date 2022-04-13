@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import classNames from "classnames";
@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { createShopOrder } from "@actions/shop";
 import { Button } from "@components/Buttons";
 import { IconClose } from "@components/Icons";
+import { useScrollBlock } from "@hooks/useScrollBlock";
 import { Order } from "@models/data";
 
 import "./CreateOrderModal.scss";
@@ -32,8 +33,16 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
   const { isOpened, item, price, closeModal, closeOverlay } = props;
 
   const dispatch = useDispatch();
+  const [blockScroll, allowScroll] = useScrollBlock();
 
   const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    if (isOpened) {
+      blockScroll();
+    }
+    return () => allowScroll();
+  }, [allowScroll, blockScroll, isOpened]);
 
   const initialValues: ICreateForm = {
     item: item,
@@ -82,7 +91,6 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
   return (
     <div
       className={classNames("modal__create__order", {
-        "modal__create__order--active": isOpened,
         "modal__create__order--inactive": !isOpened,
       })}
     >
@@ -111,132 +119,130 @@ export const CreateOrderModal: React.FC<IProps> = (props) => {
       ) : (
         <>
           <h5>Оформление заказа</h5>
-          <div className="modal__create__form">
-            <Formik
-              validateOnChange={false}
-              validateOnBlur={false}
-              validationSchema={createOrderFormSchema}
-              initialValues={initialValues}
-              onSubmit={(values) => handleSearchFormSumbit(values)}
-            >
-              {({ touched, errors }) => (
-                <div className="create__order__form__content">
-                  <Form
-                    className="create__order__form__wrapper"
-                    autoComplete="off"
+          <Formik
+            validateOnChange={false}
+            validateOnBlur={false}
+            validationSchema={createOrderFormSchema}
+            initialValues={initialValues}
+            onSubmit={(values) => handleSearchFormSumbit(values)}
+          >
+            {({ touched, errors }) => (
+              <div className="create__order__form__content">
+                <Form
+                  className="create__order__form__wrapper"
+                  autoComplete="off"
+                >
+                  <div className="input__wrapper">
+                    <label htmlFor="item">Товар</label>
+                    <Field
+                      className="form__input"
+                      type="text"
+                      name="item"
+                      value={item}
+                      disabled
+                    />
+                  </div>
+                  <div className="input__wrapper">
+                    <label htmlFor="price">Цена товара</label>
+                    <Field
+                      className="form__input"
+                      type="text"
+                      name="price"
+                      value={`${price} рублей за шт/ед`}
+                      disabled
+                    />
+                  </div>
+                  <div
+                    className={classNames("input__wrapper", {
+                      "input__wrapper--error": errors.amount,
+                    })}
                   >
-                    <div className="input__wrapper">
-                      <label htmlFor="item">Товар</label>
-                      <Field
-                        className="form__input"
-                        type="text"
-                        name="item"
-                        value={item}
-                        disabled
-                      />
-                    </div>
-                    <div className="input__wrapper">
-                      <label htmlFor="price">Цена товара</label>
-                      <Field
-                        className="form__input"
-                        type="text"
-                        name="price"
-                        value={`${price} рублей за шт/ед`}
-                        disabled
-                      />
-                    </div>
-                    <div
-                      className={classNames("input__wrapper", {
-                        "input__wrapper--error": errors.amount,
-                      })}
+                    <label htmlFor="price">Количество товара (шт/ед)</label>
+                    <Field
+                      className="form__input"
+                      type="number"
+                      name="amount"
+                      autoComplete="off"
+                      placeholder="Количество (шт)"
+                    />
+                    {errors.amount && touched.amount && (
+                      <small>{errors.amount}</small>
+                    )}
+                  </div>
+                  <div
+                    className={classNames("input__wrapper", {
+                      "input__wrapper--error": errors.name,
+                    })}
+                  >
+                    <label htmlFor="name">Ваше Имя</label>
+                    <Field
+                      className="form__input"
+                      type="text"
+                      name="name"
+                      placeholder="Имя"
+                    />
+                    {errors.name && touched.name && (
+                      <small>{errors.name}</small>
+                    )}
+                  </div>
+                  <div
+                    className={classNames("input__wrapper", {
+                      "input__wrapper--error": errors.email,
+                    })}
+                  >
+                    <label htmlFor="email">Ваш Email</label>
+                    <Field
+                      className="form__input"
+                      type="text"
+                      name="email"
+                      placeholder="Email"
+                    />
+                    {errors.email && touched.email && (
+                      <small>{errors.email}</small>
+                    )}
+                  </div>
+                  <div
+                    className={classNames("input__wrapper", {
+                      "input__wrapper--error": errors.phone,
+                    })}
+                  >
+                    <label htmlFor="phone">Ваш телефон</label>
+                    <Field
+                      className="form__input"
+                      type="text"
+                      name="phone"
+                      placeholder="Телефон"
+                    />
+                    {errors.phone && touched.phone && (
+                      <small>{errors.phone}</small>
+                    )}
+                  </div>
+                  <div className="input__wrapper">
+                    <label htmlFor="address">
+                      Адрес доставки (необязательно)
+                    </label>
+                    <Field
+                      className="form__input"
+                      type="text"
+                      name="address"
+                      autoComplete="off"
+                      placeholder="Адрес"
+                    />
+                  </div>
+                  <div className="create__order__button">
+                    <Button
+                      type="submit"
+                      height="100%"
+                      color="#ffffff"
+                      backgroundColor="#3661ed"
                     >
-                      <label htmlFor="price">Количество товара (шт/ед)</label>
-                      <Field
-                        className="form__input"
-                        type="number"
-                        name="amount"
-                        autoComplete="off"
-                        placeholder="Количество (шт)"
-                      />
-                      {errors.amount && touched.amount && (
-                        <small>{errors.amount}</small>
-                      )}
-                    </div>
-                    <div
-                      className={classNames("input__wrapper", {
-                        "input__wrapper--error": errors.name,
-                      })}
-                    >
-                      <label htmlFor="name">Ваше Имя</label>
-                      <Field
-                        className="form__input"
-                        type="text"
-                        name="name"
-                        placeholder="Имя"
-                      />
-                      {errors.name && touched.name && (
-                        <small>{errors.name}</small>
-                      )}
-                    </div>
-                    <div
-                      className={classNames("input__wrapper", {
-                        "input__wrapper--error": errors.email,
-                      })}
-                    >
-                      <label htmlFor="email">Ваш Email</label>
-                      <Field
-                        className="form__input"
-                        type="text"
-                        name="email"
-                        placeholder="Email"
-                      />
-                      {errors.email && touched.email && (
-                        <small>{errors.email}</small>
-                      )}
-                    </div>
-                    <div
-                      className={classNames("input__wrapper", {
-                        "input__wrapper--error": errors.phone,
-                      })}
-                    >
-                      <label htmlFor="phone">Ваш телефон</label>
-                      <Field
-                        className="form__input"
-                        type="text"
-                        name="phone"
-                        placeholder="Телефон"
-                      />
-                      {errors.phone && touched.phone && (
-                        <small>{errors.phone}</small>
-                      )}
-                    </div>
-                    <div className="input__wrapper">
-                      <label htmlFor="address">
-                        Адрес доставки (необязательно)
-                      </label>
-                      <Field
-                        className="form__input"
-                        type="text"
-                        name="address"
-                        autoComplete="off"
-                        placeholder="Адрес"
-                      />
-                    </div>
-                    <div className="create__order__button">
-                      <Button
-                        type="submit"
-                        height="100%"
-                        color="#ffffff"
-                        backgroundColor="#3661ed"
-                      >
-                        Оформить заказ
-                      </Button>
-                    </div>
-                  </Form>
-                </div>
-              )}
-            </Formik>
-          </div>
+                      Оформить заказ
+                    </Button>
+                  </div>
+                </Form>
+              </div>
+            )}
+          </Formik>
         </>
       )}
     </div>
