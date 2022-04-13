@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 import {
   SearchFormContainer,
@@ -17,6 +18,9 @@ import "./WelcomePage.scss";
 export const WelcomePage: React.FC = () => {
   return (
     <section>
+      <Helmet>
+        <title>Строительные решения - сайт строительных материалов</title>
+      </Helmet>
       <section className="welcome__page__form__section">
         <div className="welcome__page--text-wrapper">
           <div className="icons__wrapper">

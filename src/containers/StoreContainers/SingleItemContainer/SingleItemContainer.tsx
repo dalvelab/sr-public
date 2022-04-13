@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { Helmet } from "react-helmet";
 
 import { getShopSingleItem } from "@actions/shop";
 import { BadgeStatus } from "@components/Badge";
@@ -40,6 +41,9 @@ export const SingleItemContainer: React.FC = () => {
         <p>Загрузка..</p>
       ) : (
         <>
+          <Helmet>
+            <title>{item.attributes.title} - Строительные решения</title>
+          </Helmet>
           {isOverlay && <div className="modal__overlay"></div>}
           <CreateOrderModal
             isOpened={isOpened}
