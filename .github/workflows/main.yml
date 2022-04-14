@@ -26,8 +26,8 @@ jobs:
       - name: Build react app production version
         run: npm run build
       - name: Delete old build
-        run: rm -rf /var/sr-apps/sr-production/dist
+        run: rm -rf /var/sr-web-apps/sr-production/dist
       - name: Move new build to production dir
-        run: mv dist /var/sr-apps/sr-production
+        run: mv dist /var/sr-web-apps/sr-production
       - name: Restart pm2 process
         run: pm2 restart 1
