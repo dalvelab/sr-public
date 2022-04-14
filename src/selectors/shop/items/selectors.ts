@@ -1,16 +1,40 @@
+import { always, cond, equals, T } from "ramda";
 import { createSelector } from "reselect";
 
 import { RootState } from "@models/state";
+import { ItemShopSort } from "@models/sort";
 import { isVoid } from "@utils/common";
 
-export const itemsSortSelector = createSelector(
-  (state: RootState) => state.shop.sorting,
-  (sort) => sort
-);
+import { shopSortSelector } from "../sorting";
 
 export const itemsSelector = createSelector(
   (state: RootState) => state.shop.itemsTransaction,
   (items) => items
+);
+
+export const itemsSortedSelector = createSelector(
+  itemsSelector,
+  shopSortSelector,
+  (itemsShop, sortShop) => {
+    const { items } = itemsShop;
+    const { sortBy } = sortShop;
+
+    if (equals(ItemShopSort.BYNAME, sortBy)) {
+      return items.sort((a, b) =>
+        a.attributes.title.localeCompare(b.attributes.title)
+      );
+    }
+
+    if (equals(ItemShopSort.PRICEDECREASE, sortBy)) {
+      return items.sort((a, b) => b.attributes.price - a.attributes.price);
+    }
+
+    if (equals(ItemShopSort.PRICEINCREASE, sortBy)) {
+      return items.sort((a, b) => a.attributes.price - b.attributes.price);
+    }
+
+    return items;
+  }
 );
 
 export const singleItemSelector = createSelector(
