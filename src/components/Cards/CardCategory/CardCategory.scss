@@ -1,6 +1,6 @@
 .card__category {
   width: 220px;
-  height: 220px;
+  height: 250px;
   background-color: var(--color-white);
   border-radius: 15px;
   padding: 12px;
@@ -21,15 +21,16 @@
   }
   .card__image {
     margin-top: 10px;
-    width: 145px;
-    height: 125px;
+    width: 200px;
+    height: 160px;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     img {
-      width: 100%;
+      width: inherit;
+      height: inherit;
+      border-radius: 12px;
       object-fit: cover;
-      height: 125px;
     }
   }
   .card__title {

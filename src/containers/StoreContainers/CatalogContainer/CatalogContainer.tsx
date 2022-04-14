@@ -5,7 +5,11 @@ import { useSearchParams } from "react-router-dom";
 import { getShopItems, getShopSortingAction } from "@actions/shop";
 import { CardItem } from "@components/Cards";
 import { ButtonDropdown } from "@components/Buttons";
-import { itemsSelector, itemsSortSelector } from "@selectors/shop";
+import {
+  itemsSortedSelector,
+  itemsSelector,
+  shopSortSelector,
+} from "@selectors/shop";
 import { notEmpty } from "@utils/common";
 
 import "./CatalogContainer.scss";
@@ -18,8 +22,9 @@ export const CatalogContainer: React.FC = () => {
   const search = searchParams.get("search");
   const category = searchParams.get("category");
 
-  const { items, count } = useSelector(itemsSelector);
-  const { sortBy } = useSelector(itemsSortSelector);
+  const { count } = useSelector(itemsSelector);
+  const items = useSelector(itemsSortedSelector);
+  const { sortBy } = useSelector(shopSortSelector);
 
   const [isActive, setIsActive] = useState(false);
 
