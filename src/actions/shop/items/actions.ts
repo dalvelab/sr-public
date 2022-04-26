@@ -34,7 +34,7 @@ export const getShopItems =
           search ? `filters[title][$containsi]=${search}` : ""
         }&populate[category][fields][0]=category&populate[subcategory][fields][0]=subcategory&populate[brand][fields][0]=brand&populate[image][fields][0]=url${
           category ? `&filters[category][category][$containsi]=${category}` : ""
-        }`
+        }&pagination[limit]=-1`
       );
 
       dispatch({

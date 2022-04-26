@@ -39,9 +39,6 @@ export const WelcomePage: React.FC = () => {
               Магазин <span className="font--primary">строительных</span> <br />{" "}
               материалов
             </h1>
-            <p className="welcome__text font--blue-gray">
-              Небольшое описание на несколько слов
-            </p>
           </div>
         </div>
         <SearchFormContainer />
