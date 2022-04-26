@@ -1,0 +1,19 @@
+.filters__modal {
+  width: 480px;
+  min-height: 600px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 5;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding: 12px;
+  display: none;
+  .filters__modal__title {
+    font-size: 25px;
+    font-weight: 500;
+  }
+}

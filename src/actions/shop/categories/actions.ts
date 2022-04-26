@@ -13,7 +13,7 @@ export const getUniqueCategories = () => async (dispatch: Dispatch) => {
     dispatch({ type: requestCategories });
 
     const { data } = await api.get(
-      `/items/count/categories?populate[0]=category&populate[1]=category.image`
+      `/items/count/categories?populate[0]=category&populate[1]=category.image&pagination[limit]=-1`
     );
 
     dispatch({

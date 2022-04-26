@@ -3,7 +3,7 @@ name: React CI
 on:
   push:
     branches: [main]
-  pull_request: 
+  pull_request:
     branches: [main]
 
 jobs:
@@ -12,16 +12,9 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [14.x]
 
     steps:
-      - name: ssh connection
-        uses: appleboy/scp-action@master
-        with:
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
