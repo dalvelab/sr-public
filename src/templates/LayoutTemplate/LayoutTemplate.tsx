@@ -8,6 +8,8 @@ import {
   MobileMenuContainer,
 } from "@containers/index";
 
+import { Footer } from "./Footer";
+
 import "./LayoutTemplate.scss";
 
 export const LayoutTemplate: React.FC = () => {
@@ -26,6 +28,7 @@ export const LayoutTemplate: React.FC = () => {
         marginLeft={!isMobileScreen ? (isCollapsed ? "120px" : "320px") : "0px"}
       >
         <Outlet />
+        <Footer />
       </MainContainer>
     </main>
   );

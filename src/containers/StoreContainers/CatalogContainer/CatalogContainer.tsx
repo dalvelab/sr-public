@@ -63,18 +63,20 @@ export const CatalogContainer: React.FC = () => {
           </div>
         )}
       </div>
-      <div className="store__page__filters">
-        <ButtonDropdown
-          label="Сортировка:"
-          activeOption={sortBy}
-          options={sortOptions}
-          isActive={isActive}
-          onClick={() => handleButtonDropdown()}
-          onOptionClick={(sortBy: string) =>
-            handleButtonDropdownRowClick(sortBy)
-          }
-        />
-      </div>
+      {items.length > 0 && (
+        <div className="store__page__filters">
+          <ButtonDropdown
+            label="Сортировка:"
+            activeOption={sortBy}
+            options={sortOptions}
+            isActive={isActive}
+            onClick={() => handleButtonDropdown()}
+            onOptionClick={(sortBy: string) =>
+              handleButtonDropdownRowClick(sortBy)
+            }
+          />
+        </div>
+      )}
       <div className="card__items__wrapper">
         {items.map((item) => (
           <CardItem key={item.id} item={item} />

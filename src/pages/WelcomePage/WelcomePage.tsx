@@ -17,7 +17,7 @@ import "./WelcomePage.scss";
 
 export const WelcomePage: React.FC = () => {
   return (
-    <section>
+    <>
       <Helmet>
         <title>Строительные решения - сайт строительных материалов</title>
       </Helmet>
@@ -51,6 +51,6 @@ export const WelcomePage: React.FC = () => {
         <h2>Специальные предложения</h2>
         <SpecialOfferContainer />
       </section>
-    </section>
+    </>
   );
 };

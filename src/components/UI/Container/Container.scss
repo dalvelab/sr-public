@@ -4,6 +4,7 @@
   height: auto;
   position: relative;
   display: flex;
+  flex-direction: column;
   margin: 0 auto 0 0;
   @include screen(tablet-wide) {
     width: 95%;

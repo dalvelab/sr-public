@@ -2,6 +2,8 @@ import { Helmet } from "react-helmet";
 
 import { FavouriteItemsContainer } from "@containers/FavouriteItemsContainer";
 
+import "./FavouritePage.scss";
+
 export const FavouritePage: React.FC = () => {
   return (
     <>
